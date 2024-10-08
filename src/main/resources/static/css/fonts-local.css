@@ -1,0 +1,89 @@
+/* 한국어 */
+@font-face {
+    font-family: 'Gowun Batang';
+    src: url('/fonts/GowunBatang-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gowun Dodum';
+    src: url('/fonts/GowunDodum-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nanum Gothic';
+    src: url('/fonts/NanumGothic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts/NotoSansKR-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Serif KR';
+    src: url('/fonts/NotoSerifKR.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.gowun-batang {
+    font-family: 'Gowun Batang', sans-serif;
+}
+
+.gowun-dodum {
+    font-family: 'Gowun Dodum', sans-serif;
+}
+
+.nanum-gothic {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.noto-sans-kr {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.noto-serif-kr {
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 일본어 */
+@font-face {
+    font-family: 'MPLUSRounded1c';
+    src: url('/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kosugi Maru';
+    src: url('/fonts/KosugiMaru-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.mplus-rounded {
+    font-family: 'MPLUSRounded1c', sans-serif;
+}
+
+.kosugi-maru {
+    font-family: 'Kosugi Maru', sans-serif;
+}
