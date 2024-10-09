@@ -49,7 +49,7 @@ public class UserService {
     public void modifyUser(Long id, UserDTO userDTO){
 
         User user = userRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("해당 유저가 존재하지 않습니다."));
+            .orElseThrow(() -> new IllegalArgumentException("The specified user does not exist."));
         
         user
             .setUserPw(userDTO.getUserPw())
