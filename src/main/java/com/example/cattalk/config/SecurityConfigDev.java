@@ -26,6 +26,7 @@ public class SecurityConfigDev {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+            .csrf((csrf) -> csrf.disable())
             .authorizeHttpRequests((requests) -> requests
                 .anyRequest().permitAll()
             )
@@ -41,7 +42,7 @@ public class SecurityConfigDev {
                 .permitAll()
             )
             // 사용자가 접근권한이 없을경우 처리
-            .exceptionHandling(config -> {
+            .exceptionHandling((config) -> {
                 config.accessDeniedHandler(new CustomAccessDeniedHandler());
             })
             // userDetailsService가 구현되있으면 굳이 필요없다고 함
