@@ -16,10 +16,10 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String username;
+    private String userId;
 
     @Column(nullable = false)
-    private String password;
+    private String userPw;
 
     @Column(nullable = false)
     private String nickname;
