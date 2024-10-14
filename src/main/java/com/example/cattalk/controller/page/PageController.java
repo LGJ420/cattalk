@@ -18,4 +18,9 @@ public class PageController {
         return "test/test";
     }
 
+    @GetMapping("test2")
+    public String test2Page() {
+
+        return "test/test2";
+    }
 }

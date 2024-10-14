@@ -1,6 +1,8 @@
 package com.example.cattalk.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,26 @@ public class UserService {
     
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+
+
+    
+    // 닉네임으로 사용자 찾기 (현재 사용자 제외)
+    public List<UserDTO> searchByNickname(Long currentUserId, String nickname) {
+        List<User> users = userRepository.findByNicknameContainingAndIdNot(currentUserId, nickname);
+
+        List<UserDTO> userDTOs = users.stream()
+            .map(user -> UserDTO.builder()
+                .nickname(user.getNickname())
+                .profileImage(user.getProfileImage())
+                .build())
+            .collect(Collectors.toList());
+
+        return userDTOs;
+    }
+
+
+
 
     // 회원가입
     public void signUp(UserDTO userDTO){
@@ -65,4 +87,5 @@ public class UserService {
 
         userRepository.save(user);
     }
+
 }
