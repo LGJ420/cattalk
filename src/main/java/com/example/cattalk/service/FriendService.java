@@ -22,8 +22,8 @@ public class FriendService {
     private final UserRepository userRepository;
 
     // 친구 목록 조회
-    public List<UserDTO> getFriends(Long userId) {
-        User user = userRepository.findById(userId)
+    public List<UserDTO> getFriends(String userNickname) {
+        User user = userRepository.findByNickname(userNickname)
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
         List<Friend> friends = friendRepository.findByUser(user);
@@ -40,8 +40,8 @@ public class FriendService {
 
 
     // 친구 추가
-    public void addFriend(Long userId, String friendNickname) {
-        User user = userRepository.findById(userId)
+    public void addFriend(String userNickname, String friendNickname) {
+        User user = userRepository.findByNickname(userNickname)
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
         User friend = userRepository.findByNickname(friendNickname)
             .orElseThrow(() -> new IllegalArgumentException("Friend not found"));
@@ -57,8 +57,8 @@ public class FriendService {
 
 
     // 친구 삭제
-    public void removeFriend(Long userId, String friendNickname) {
-        User user = userRepository.findById(userId)
+    public void removeFriend(String userNickname, String friendNickname) {
+        User user = userRepository.findByNickname(userNickname)
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
         User friend = userRepository.findByNickname(friendNickname)
             .orElseThrow(() -> new IllegalArgumentException("Friend not found"));

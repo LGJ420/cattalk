@@ -24,16 +24,16 @@ public class FriendController {
 
     private final FriendService friendService;
 
+    // 타임리프로 쓰기위해 REST컨트롤러에서 임시 제외시킴
+    // // 친구 목록 조회
+    // @GetMapping
+    // public ResponseEntity<List<UserDTO>> getFriends(
+    //     @AuthenticationPrincipal User user) {
 
-    // 친구 목록 조회
-    @GetMapping
-    public ResponseEntity<List<UserDTO>> getFriends(
-        @AuthenticationPrincipal User user) {
+    //     List<UserDTO> friends = friendService.getFriends(user.getNickname());
 
-        List<UserDTO> friends = friendService.getFriends(user.getId());
-
-        return ResponseEntity.ok(friends);
-    }
+    //     return ResponseEntity.ok(friends);
+    // }
     
 
     // 친구 추가
@@ -42,7 +42,7 @@ public class FriendController {
         @AuthenticationPrincipal User user,
         @RequestParam String friendNickname) {
         
-        friendService.addFriend(user.getId(), friendNickname);
+        friendService.addFriend(user.getNickname(), friendNickname);
 
         return ResponseEntity.ok("Friend added successfully");
     }
@@ -54,7 +54,7 @@ public class FriendController {
         @AuthenticationPrincipal User user,
         @RequestParam String friendNickname) {
 
-        friendService.removeFriend(user.getId(), friendNickname);
+        friendService.removeFriend(user.getNickname(), friendNickname);
 
         return ResponseEntity.ok("Friend removed successfully");
     }

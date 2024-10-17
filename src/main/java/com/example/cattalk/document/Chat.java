@@ -18,6 +18,7 @@ public class Chat {
     private String msg;
     private String sender;
     private String receiver;
+    private String room;
 
     @Indexed(expireAfterSeconds = 86400)  // 24시간 후 자동 삭제
     private LocalDateTime createdAt;
