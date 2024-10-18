@@ -217,13 +217,15 @@
 
         // 선택 모달 확인 버튼
         document.getElementById('confirmButton').addEventListener('click', function () {
-            addFriend(selectedNickname);
             closeConfirmModal();
+            addFriend(selectedNickname);
         });
 
         // 선택 모달 취소 버튼
         document.getElementById('cancelButton').addEventListener('click', function () {
             closeConfirmModal();
+            const modalContainer = document.getElementById('modalContainer');
+            modalContainer.classList.add('hidden');
         });
 
 
@@ -254,19 +256,17 @@
                 body: formData
             })
             .then(response => {
-                console.log(response);
                 if (!response.ok) {
                     throw new Error('친구 추가에 실패했습니다.');
                 }
-                return response.text();
-            })
-            .then(data => {
                 // 완료 모달 창 표시
                 showSuccessModal();
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('친구 추가 중 오류가 발생했습니다.');
+                const modalContainer = document.getElementById('modalContainer');
+                modalContainer.classList.add('hidden');
             });
         }
 
