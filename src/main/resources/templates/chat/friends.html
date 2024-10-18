@@ -11,17 +11,13 @@
 </head>
 
 <body class="h-screen max-w-[60rem] m-auto noto-sans-kr flex flex-col">
-    <div class="h-24 flex items-center justify-between">
-        <a href="/"
-            class="h-full">
-            <img th:src="@{/images/logo_row.png}" alt="로고"
-                class="h-full px-7 py-5"/>
-        </a>
-        <a href="/logout"
-            class="mr-5 hover:opacity-30">
-            로그아웃
-        </a>
-    </div>
+    
+    
+    <header>
+        <div th:replace="~{layout/header :: header}"></div>
+    </header>
+
+
     <div class="flex-1 bg-amber-700/30 overflow-y-auto">
         <div th:text="|친구 ${friends.size()}명|"
             class="px-5 pb-1 pt-2 text-sm"></div>
@@ -39,28 +35,13 @@
             </li>
         </ul>
     </div>
-    <div class="h-28">
-        <ul class="flex h-full">
-            <li class="flex items-center justify-center h-full w-1/3 hover:bg-slate-300">
-                <a href="/friends">
-                    <img th:src="@{/images/icon_friends.png}" alt="친구목록"
-                    class="w-12 h-12 object-contain"/>
-                </a>
-            </li>
-            <li class="flex items-center justify-center h-full w-1/3 hover:bg-slate-300">
-                <a href="/">
-                    <img th:src="@{/images/icon_search.png}" alt="검색"
-                        class="w-12 h-12 object-contain"/>
-                </a>
-            </li>
-            <li class="flex items-center justify-center h-full w-1/3 hover:bg-slate-300">
-                <a href="/">
-                    <img th:src="@{/images/icon_config.png}" alt="설정"
-                        class="w-12 h-12 object-contain"/>
-                </a>
-            </li>
-        </ul>
-    </div>
+    
+
+    <footer>
+        <div th:replace="~{layout/footer :: footer}"></div>
+    </footer>
+
+
 </body>
 
 <script>
