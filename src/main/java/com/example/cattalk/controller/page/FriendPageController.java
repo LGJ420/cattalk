@@ -25,8 +25,7 @@ public class FriendPageController {
         Model model,
         @AuthenticationPrincipal User user) {
 
-        // 현재는 GM기정 유저로 하드코딩
-        List<UserDTO> friends = friendService.getFriends("GM기정");
+        List<UserDTO> friends = friendService.getFriends(user.getNickname());
 
         model.addAttribute("friends", friends);
 

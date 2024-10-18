@@ -17,9 +17,7 @@ public class ChatPageController {
         @PathVariable String nickname,
         Model model) {
 
-        // String senderNickname = user.getNickname();
-        // 현재는 GM기정 유저로 하드코딩
-        String senderNickname = "GM기정";
+        String senderNickname = user.getNickname();
         String receiverNickname = nickname;
 
         model.addAttribute("senderNickname", senderNickname);
