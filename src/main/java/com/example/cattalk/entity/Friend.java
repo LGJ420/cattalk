@@ -12,6 +12,11 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"user_id", "friend_id"})
+    }
+)
 public class Friend {
 
     @Id

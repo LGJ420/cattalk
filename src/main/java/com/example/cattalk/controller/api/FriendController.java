@@ -36,7 +36,7 @@ public class FriendController {
     @PostMapping
     public ResponseEntity<String> addFriend(
         @AuthenticationPrincipal User user,
-        @RequestParam String friendNickname) {
+        @RequestParam("friendNickname") String friendNickname) {
         
         friendService.addFriend(user.getNickname(), friendNickname);
 
@@ -48,7 +48,7 @@ public class FriendController {
     @DeleteMapping
     public ResponseEntity<String> removeFriend(
         @AuthenticationPrincipal User user,
-        @RequestParam String friendNickname) {
+        @RequestParam("friendNickname") String friendNickname) {
 
         friendService.removeFriend(user.getNickname(), friendNickname);
 
