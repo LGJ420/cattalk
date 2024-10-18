@@ -1,0 +1,26 @@
+<ul>
+
+    <li>
+        <div class="flex items-center justify-center h-full">
+            검색 결과가 없습니다.
+        </div>
+    </li>
+</ul>
+
+<script>
+
+    const getList = (nickname, profileImage) => {
+
+        return `<li>
+                    <div class="bg-amber-700 bg-opacity-0 hover:bg-opacity-30">
+                        <div class="flex items-center p-5">
+                            <img th:src="@{/images/${profileImage}}" alt="프로필 이미지"
+                                class="rounded-full w-16 h-16 object-contain" />
+                            <div th:text="${nickname}"
+                                class="text-2xl px-5"></div>
+                        </div>
+                    </div>
+                </li>`
+    }
+
+</script>

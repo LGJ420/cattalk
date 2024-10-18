@@ -23,17 +23,17 @@ eventSource.onmessage = (e) => {
 
 
 // 전송 버튼 클릭시
-document.querySelector("#chat-send-btn").addEventListener("click", () => {
+document.getElementById("chat-send-btn").addEventListener("click", () => {
 
     transmitMsg();
 });
 
 
 // 단축키 설정
-document.querySelector("#chat-send-msg").addEventListener("keydown", (e) => {
+document.getElementById("chat-send-msg").addEventListener("keydown", (e) => {
 
     // ENTER키 입력시
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
         transmitMsg();
     }
 });
@@ -43,7 +43,7 @@ document.querySelector("#chat-send-msg").addEventListener("keydown", (e) => {
 // 서버로 메시지 전송하기
 const transmitMsg = () => {
 
-    let inputMsg = document.querySelector("#chat-send-msg");
+    let inputMsg = document.getElementById("chat-send-msg");
 
     let chat = {
         sender: senderNickname,
@@ -72,7 +72,7 @@ const transmitMsg = () => {
 // 왼쪽/오른쪽 배치 함수와 메시지를 이용해서 메시지를 화면에 추가
 const addMsg = (msg, time, callbackFn) => {
 
-    let chatBox = document.querySelector("#chat-box");
+    let chatBox = document.getElementById("chat-box");
     let chatInnerBox = document.createElement("div");
     chatInnerBox.innerHTML = callbackFn(msg, time);
     chatBox.append(chatInnerBox);

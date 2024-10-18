@@ -11,15 +11,16 @@
 </head>
 
 <body class="h-screen max-w-[60rem] m-auto noto-sans-kr flex flex-col">
-    
-    
+
+
     <header>
         <div th:replace="~{layout/header :: header}"></div>
         <div class="relative">
-            <div class="w-3/4 px-5 py-2 absolute -bottom-14 left-1/2 -translate-x-1/2 bg-white rounded-3xl flex items-center justify-center">
+            <div
+                class="w-3/4 px-5 py-2 absolute -bottom-14 left-1/2 -translate-x-1/2 bg-white rounded-3xl flex items-center justify-center">
                 <input type="text" id="findNickname" name="findNickname" placeholder="친구 닉네임을 입력해주세요"
-                    class="w-5/6 outline-none focus:placeholder-transparent text-center placeholder:text-center"/>
-                <button class="w-1/6">
+                    class="w-5/6 outline-none focus:placeholder-transparent text-center placeholder:text-center" />
+                <button id="searchButton" class="w-1/6">
                     검색
                 </button>
             </div>
@@ -28,9 +29,11 @@
 
 
     <div class="flex-1 bg-amber-700/30 overflow-y-auto">
-
+        <ul id="searchResults" class="mt-20">
+            <!-- 검색 결과가 여기에 표시됩니다 -->
+        </ul>
     </div>
-    
+
 
     <footer>
         <div th:replace="~{layout/footer :: footer}"></div>
@@ -40,6 +43,84 @@
 </body>
 
 <script>
+
+    // 멤버 목록 html 틀
+    const getList = (nickname, profileImage) => {
+        return `<li>
+                    <div class="bg-amber-700 bg-opacity-0 hover:bg-opacity-30">
+                        <div class="flex items-center p-5">
+                            <img src="/images/profile_default.png" alt="프로필 이미지"
+                                class="rounded-full w-16 h-16 object-contain" />
+                            <div class="text-2xl px-5">${nickname}</div>
+                        </div>
+                    </div>
+                </li>`;
+    }
+
+    // 검색 버튼 클릭시
+    document.getElementById('searchButton').addEventListener('click', function () {
+
+        searchNickname();
+    });
+
+    // 단축키 설정
+    document.getElementById("findNickname").addEventListener("keydown", (e) => {
+
+        // ENTER키 입력시
+        if (e.key === 'Enter') {
+            searchNickname();
+        }
+    });
+
+
+
+
+
+    // 닉네임으로 사용자 검색
+    function searchNickname() {
+
+        const nickname = document.getElementById('findNickname').value.trim();
+
+        if (nickname) {
+
+            fetch(`/api/user?nickname=${encodeURIComponent(nickname)}`)
+                .then(response => response.json())
+                .then(data => {
+
+                    renderResults(data);
+
+                    // 검색 후 입력 필드 초기화
+                    document.getElementById('findNickname').value = '';
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }
+
+
+
+
+
+    // 검색 결과 렌더링
+    function renderResults(users) {
+        const resultsContainer = document.getElementById('searchResults');
+        resultsContainer.innerHTML = ''; // 이전 결과 삭제
+
+        if (users.length === 0) {
+            resultsContainer.innerHTML =
+                `<li>
+                    <div class="flex items-center justify-center h-32">
+                        검색 결과가 없습니다.
+                    </div>
+                </li>`;
+
+            return;
+        }
+
+        users.forEach(user => {
+            const listItemHTML = getList(user.nickname, user.profileImage);
+            resultsContainer.insertAdjacentHTML('beforeend', listItemHTML);
+        });
+    }
 
 
 
