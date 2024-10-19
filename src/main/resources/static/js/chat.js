@@ -51,10 +51,14 @@ const transmitMsg = () => {
         msg: inputMsg.value
     }
 
+    // csrf처리
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
     fetch("/api/chat", {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
+            'Content-Type': 'application/json;charset=UTF-8',
+            'X-CSRF-TOKEN': csrfToken
         },
         body: JSON.stringify(chat)
     }).then(() => {

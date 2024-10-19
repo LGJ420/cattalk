@@ -25,8 +25,14 @@ document.getElementById('confirmButton').addEventListener('click', function () {
 // 친구 삭제 API 호출
 function deleteFriend(friendNickname) {
 
+    // csrf처리
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
     fetch(`/api/friend/${friendNickname}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
     })
         .then(response => {
             if (!response.ok) {

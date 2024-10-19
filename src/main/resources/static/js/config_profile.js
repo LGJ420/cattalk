@@ -30,11 +30,14 @@ function handleClickSubmit() {
         userDTO.detailAddress = detailAddress;
     }
 
+    // csrf처리
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
 
     fetch('/api/user', {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
         },
         body: JSON.stringify(userDTO)
     })

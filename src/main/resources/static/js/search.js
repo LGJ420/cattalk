@@ -27,8 +27,15 @@ document.getElementById("findNickname").addEventListener("keydown", (e) => {
 function searchNickname() {
     const nickname = document.getElementById('findNickname').value.trim();
 
+    // csrf처리
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
     if (nickname) {
-        fetch(`/api/user?nickname=${encodeURIComponent(nickname)}`)
+        fetch(`/api/user?nickname=${encodeURIComponent(nickname)}`, {
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            })
             .then(response => response.json())
             .then(data => {
                 renderResults(data);
@@ -91,8 +98,14 @@ function addFriend(friendNickname) {
     let formData = new FormData();
     formData.append('friendNickname', friendNickname);
 
+    // csrf처리
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
     fetch('/api/friend', {
         method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        },
         body: formData
     })
         .then(response => {

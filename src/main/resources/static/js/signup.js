@@ -13,11 +13,15 @@ function signup() {
 
     alert("현재는 회원가입을 할 수 없습니다. 운영자에게 문의 바랍니다.");
 
+    // csrf처리
+    // const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
     // try {
     //     fetch('/api/user', {
     //         method: 'POST',
     //         headers: {
-    //             'Content-Type': 'application/json'
+    //             'Content-Type': 'application/json',
+    //             'X-CSRF-TOKEN': csrfToken
     //         },
     //         body: JSON.stringify(data)
     //     });
