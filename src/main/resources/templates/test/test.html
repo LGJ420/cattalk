@@ -1,26 +1,22 @@
-<ul>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <li>
-        <div class="flex items-center justify-center h-full">
-            검색 결과가 없습니다.
-        </div>
-    </li>
-</ul>
+<head>
+    <link rel="icon" th:href="@{/favicon.ico}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATTALK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/css/fonts-local.css}">
+</head>
 
-<script>
+<body class="h-screen max-w-[60rem] m-auto noto-sans-kr flex flex-col">
 
-    const getList = (nickname, profileImage) => {
 
-        return `<li>
-                    <div class="bg-amber-700 bg-opacity-0 hover:bg-opacity-30">
-                        <div class="flex items-center p-5">
-                            <img th:src="@{/images/${profileImage}}" alt="프로필 이미지"
-                                class="rounded-full w-16 h-16 object-contain" />
-                            <div th:text="${nickname}"
-                                class="text-2xl px-5"></div>
-                        </div>
-                    </div>
-                </li>`
-    }
+    <div th:replace="~{common/confirm_modal :: fragConfirmModal('테스트')}"></div>
 
-</script>
+
+</body>
+
+
+</html>
