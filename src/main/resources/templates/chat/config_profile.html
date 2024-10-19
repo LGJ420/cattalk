@@ -19,11 +19,64 @@
     </header>
 
 
-    <div class="flex-1 bg-amber-700/30 overflow-y-auto">
+    <div class="flex-1 bg-amber-700/30 overflow-y-auto p-5">
         
+        <div class="flex flex-col rounded-md bg-white/50 p-4 mb-10">
+            <h3 class="mb-7 ml-2">기본정보</h3>
+            <div class="w-4/5 self-center sm:translate-x-16">
+                <div class="flex items-center mb-4">
+                    <div class="w-1/2 sm:w-1/4">사진</div>
+                    <img th:src="@{/images/profile_default.png}"
+                        class="rounded-full w-14" />
+                </div>
+                <div class="flex items-center mb-4">
+                    <div class="w-1/2 sm:w-1/4">이름</div>
+                    <div>개똥이</div>
+                </div>
+                <div class="flex items-center mb-4">
+                    <div class="w-1/2 sm:w-1/4">닉네임</div>
+                    <div>개똥이</div>
+                </div>
+                <div class="flex items-center mb-4">
+                    <label class="w-1/2 sm:w-1/4">비밀번호</label>
+                    <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent" 
+                        type="password" maxlength="30"/>
+                </div>
+                <div class="flex items-center mb-4">
+                    <label class="w-1/2 sm:w-1/4">비밀번호 확인</label>
+                    <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent" 
+                        type="password" maxlength="30"/>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex flex-col rounded-md bg-white/50 p-4">
+            <h3 class="mb-7 ml-2">선택정보</h3>
+            <div class="w-4/5 self-center sm:translate-x-16">
+                <div class="flex items-center mb-4">
+                    <label class="w-1/2 sm:w-1/4">전화번호</label>
+                    <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent sm:w-1/4"
+                        type="tel" maxlength="11"/>
+                </div>
+                <div class="flex items-center mb-4">
+                    <label class="w-1/2 sm:w-1/4">주소</label>
+                    <textarea class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent resize-none"
+                        rows="3" ></textarea>
+                </div>
+            </div>
+        </div>
+
         
     </div>
-    
+
+    <div class="flex items-center justify-end h-24 p-3">
+        <button class="text-xl px-4 py-2 rounded-lg hover:opacity-30 mr-3 bg-amber-700 text-white">
+            완료
+        </button>
+        <button class="text-xl px-4 py-2 rounded-lg hover:opacity-30 bg-gray-500 text-white">
+            취소
+        </button>
+    </div>
 
 </body>
 
