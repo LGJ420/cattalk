@@ -24,6 +24,31 @@ public class UserService {
 
 
 
+    public UserDTO getUser(Long id){
+
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("The specified user does not exist."));
+    
+        UserDTO userDTO = UserDTO.builder()
+            .userId(user.getUserId())
+            .realname(user.getRealname())
+            .nickname(user.getNickname())
+            .role(user.getRole())
+            .profileImage(user.getProfileImage())
+            .phone(user.getPhone())
+            .birth(user.getBirth())
+            .postcode(user.getPostcode())
+            .postAddress(user.getPostAddress())
+            .detailAddress(user.getDetailAddress())
+            .extraAddress(user.getExtraAddress())
+            .build();
+
+        return userDTO;
+    }
+
+
+
+
     
     // 닉네임으로 사용자 찾기 (현재 사용자 제외)
     public List<UserDTO> searchByNickname(Long currentUserId, String nickname) {
@@ -73,17 +98,36 @@ public class UserService {
         User user = userRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("The specified user does not exist."));
         
-        user
-            .setUserPw(userDTO.getUserPw())
-            .setRealname(userDTO.getRealname())
-            .setNickname(userDTO.getNickname())
-            .setProfileImage(userDTO.getProfileImage())
-            .setPhone(userDTO.getPhone())
-            .setBirth(userDTO.getBirth())
-            .setPostcode(userDTO.getPostcode())
-            .setPostAddress(userDTO.getPostAddress())
-            .setDetailAddress(userDTO.getDetailAddress())
-            .setExtraAddress(userDTO.getExtraAddress());
+        if (userDTO.getUserPw() != null && !userDTO.getUserPw().isEmpty()) {
+            user.setUserPw(passwordEncoder.encode(userDTO.getUserPw()));
+        }
+        if (userDTO.getRealname() != null) {
+            user.setRealname(userDTO.getRealname());
+        }
+        if (userDTO.getNickname() != null) {
+            user.setNickname(userDTO.getNickname());
+        }
+        if (userDTO.getProfileImage() != null) {
+            user.setProfileImage(userDTO.getProfileImage());
+        }
+        if (userDTO.getPhone() != null) {
+            user.setPhone(userDTO.getPhone());
+        }
+        if (userDTO.getBirth() != null) {
+            user.setBirth(userDTO.getBirth());
+        }
+        if (userDTO.getPostcode() != null) {
+            user.setPostcode(userDTO.getPostcode());
+        }
+        if (userDTO.getPostAddress() != null) {
+            user.setPostAddress(userDTO.getPostAddress());
+        }
+        if (userDTO.getDetailAddress() != null) {
+            user.setDetailAddress(userDTO.getDetailAddress());
+        }
+        if (userDTO.getExtraAddress() != null) {
+            user.setExtraAddress(userDTO.getExtraAddress());
+        }
 
         userRepository.save(user);
     }

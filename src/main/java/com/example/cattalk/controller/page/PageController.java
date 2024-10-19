@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.cattalk.dto.UserDTO;
 import com.example.cattalk.entity.User;
 import com.example.cattalk.service.FriendService;
+import com.example.cattalk.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,15 +19,16 @@ import lombok.RequiredArgsConstructor;
 public class PageController {
       
     private final FriendService friendService;
+    private final UserService userService;
 
 
     // 친구 목록 페이지
     @GetMapping("friends")
     public String getFriendPage(
         Model model,
-        @AuthenticationPrincipal User user) {
+        @AuthenticationPrincipal User currentUser) {
 
-        List<UserDTO> friends = friendService.getFriends(user.getNickname());
+        List<UserDTO> friends = friendService.getFriends(currentUser.getNickname());
 
         model.addAttribute("friends", friends);
 
@@ -60,7 +62,16 @@ public class PageController {
 
     // 개인정보 설정 페이지
     @GetMapping("config/profile")
-    public String getConfigProfilePage() {
+    public String getConfigProfilePage(
+        Model model,
+        @AuthenticationPrincipal User currentUser) {
+
+        UserDTO userDTO = userService.getUser(currentUser.getId());
+        
+        model.addAttribute("realname", userDTO.getRealname());
+        model.addAttribute("nickname", userDTO.getNickname());
+        model.addAttribute("phone", userDTO.getPhone());
+        model.addAttribute("detailAddress", userDTO.getDetailAddress());
 
         return "chat/config_profile";
     }

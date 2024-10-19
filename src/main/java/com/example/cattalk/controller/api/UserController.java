@@ -50,9 +50,11 @@ public class UserController {
 
     // 회원정보 수정
     @PutMapping
-    public ResponseEntity<String> modifyUser(){
+    public ResponseEntity<String> modifyUser(
+        @AuthenticationPrincipal User currentUser,
+        @RequestBody UserDTO userDTO){
 
-        userService.modifyUser(null, null);
+        userService.modifyUser(currentUser.getId(), userDTO);
 
         return ResponseEntity.ok("Modify completed");
     }
