@@ -3,6 +3,7 @@ package com.example.cattalk.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,6 +36,9 @@ public class SecurityConfigDev {
                 .loginPage("/login")
                 .usernameParameter("userId")
                 .passwordParameter("userPw")
+                .failureHandler((request, response, exception) -> {
+                    response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                })
                 .permitAll()
             )
             .logout((logout) -> logout

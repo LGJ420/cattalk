@@ -11,13 +11,15 @@ function login() {
         method: 'POST',
         body: formData
     })
-    .then(() => {
-
-        // friends로 리다이렉트
-        window.location.href = '/friends';
+    .then(response => {
+        if (response.ok) {
+            window.location.href = '/friends';
+        } else {
+            throw new Error('Login failed');
+        }
     })
     .catch(error => {
-        console.error('로그인에 실패하였습니다.', error);
+        console.error('로그인에 실패하였습니다. : ', error);
         document.getElementById("errorMessage").style.display = 'block';
     });
 }

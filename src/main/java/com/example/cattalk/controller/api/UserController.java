@@ -39,13 +39,13 @@ public class UserController {
 
 
     // 회원가입
-    @PostMapping
-    public ResponseEntity<String> signUp(@RequestBody UserDTO userDTO) {
+    // @PostMapping
+    // public ResponseEntity<String> signUp(@RequestBody UserDTO userDTO) {
 
-        userService.signUp(userDTO);
+    //     userService.signUp(userDTO);
 
-        return ResponseEntity.ok("Sign-up completed");
-    }
+    //     return ResponseEntity.ok("Sign-up completed");
+    // }
 
 
     // 회원정보 수정
