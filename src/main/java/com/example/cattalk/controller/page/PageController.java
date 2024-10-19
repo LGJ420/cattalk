@@ -54,7 +54,13 @@ public class PageController {
 
     // 친구 관리 페이지
     @GetMapping("config/friends")
-    public String getConfigFriendsPage() {
+    public String getConfigFriendsPage(
+        Model model,
+        @AuthenticationPrincipal User currentUser) {
+
+        List<UserDTO> friends = friendService.getFriends(currentUser.getNickname());
+
+        model.addAttribute("friends", friends);
 
         return "chat/config_friends";
     }

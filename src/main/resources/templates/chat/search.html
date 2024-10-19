@@ -80,7 +80,7 @@
         // 멤버 목록 html 틀
         const getList = (nickname, profileImage) => {
             return `<li>
-                        <div class="bg-amber-700 bg-opacity-0 hover:bg-opacity-30 cursor-pointer friend-item" data-nickname="${nickname}">
+                        <div class="bg-amber-700 bg-opacity-0 hover:bg-opacity-30 cursor-pointer friend-item" data-friend-nickname="${nickname}">
                             <div class="flex items-center p-5">
                                 <img src="/images/profile_default.png" alt="프로필 이미지"
                                     class="rounded-full w-16 h-16 object-contain" />
@@ -143,7 +143,7 @@
             friendItems.forEach(item => {
                 item.addEventListener('click', function () {
                     initModalPosition();
-                    const selectedNickname = this.getAttribute('data-nickname');
+                    const selectedNickname = this.getAttribute('data-friend-nickname');
                     setNickname(selectedNickname);
                     openConfirmModal();
                 });
@@ -190,6 +190,7 @@
             },20);
         }
 
+
         // 완료 모달
         function showSuccessModal() {
             const modalContainer = document.getElementById('modalContainer');
@@ -222,6 +223,7 @@
             addFriend(selectedNickname);
         });
 
+        
         // 선택 모달 취소 버튼
         document.getElementById('cancelButton').addEventListener('click', function () {
             closeConfirmModal();
