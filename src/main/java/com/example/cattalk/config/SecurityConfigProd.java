@@ -27,7 +27,7 @@ public class SecurityConfigProd {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/signup", "/api/user", "/", "/error", "/css/**", "/js/**", "/images/**", "/fonts/**").permitAll()
+                .requestMatchers("/signup", "/api/user", "/", "/favicon.ico", "/error", "/css/**", "/js/**", "/images/**", "/fonts/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin((form) -> form
