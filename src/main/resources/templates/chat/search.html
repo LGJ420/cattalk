@@ -11,14 +11,14 @@
     <link rel="stylesheet" th:href="@{/css/fonts-local.css}">
 </head>
 
-<body class="h-screen max-w-[60rem] m-auto noto-sans-kr flex flex-col">
+<body class="h-dvh max-w-[60rem] m-auto noto-sans-kr flex flex-col">
 
 
     <header>
         <div th:replace="~{layout/header :: header}"></div>
         <div class="relative">
             <div
-                class="w-3/4 px-5 py-3 absolute -bottom-16 left-1/2 -translate-x-1/2 bg-white rounded-3xl flex items-center justify-center">
+                class="w-3/4 px-5 py-3 bg-white rounded-3xl flex items-center justify-center fixed top-28 left-0 right-0 max-w-[40rem] m-auto z-50">
                 <input type="text" id="findNickname" name="findNickname" placeholder="친구 닉네임을 입력해주세요"
                     class="w-5/6 outline-none focus:placeholder-transparent text-center placeholder:text-center" />
                 <button id="searchButton" class="w-1/6">
@@ -29,7 +29,7 @@
     </header>
 
 
-    <div class="flex-1 bg-amber-700/30 overflow-y-auto">
+    <div class="flex-1 bg-amber-700/30 py-24">
         <ul id="searchResults" class="mt-20">
             <!-- 검색 결과가 여기에 표시됩니다 -->
         </ul>

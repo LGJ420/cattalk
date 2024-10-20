@@ -82,7 +82,7 @@ const addMsg = (msg, time, callbackFn) => {
     chatBox.append(chatInnerBox);
 
     // 스크롤을 항상 밑으로 내린다
-    chatBox.scrollTop = chatBox.scrollHeight;
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 

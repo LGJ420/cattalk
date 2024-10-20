@@ -19,82 +19,76 @@
 
 </head>
 
-<body class="h-screen max-w-[60rem] m-auto noto-sans-kr flex flex-col">
-    
-    
+<body class="h-dvh max-w-[60rem] m-auto noto-sans-kr flex flex-col">
+
+
     <header>
         <div th:replace="~{layout/header :: header}"></div>
     </header>
 
 
-    <div class="flex-1 bg-amber-700/30 overflow-y-auto p-5">
-        
-        <div class="flex flex-col rounded-md bg-white/50 p-4 mb-10">
-            <h3 class="mb-7 ml-2">기본정보</h3>
-            <div class="w-4/5 self-center sm:translate-x-16">
-                <div class="flex items-center mb-4">
-                    <div class="w-1/2 sm:w-1/4">사진</div>
-                    <img th:src="@{/images/profile_default.png}"
-                        class="rounded-full w-14" />
-                </div>
-                <div class="flex items-center mb-4">
-                    <div class="w-1/2 sm:w-1/4">이름</div>
-                    <div th:text="${realname}"></div>
-                </div>
-                <div class="flex items-center mb-4">
-                    <div class="w-1/2 sm:w-1/4">닉네임</div>
-                    <div th:text="${nickname}"></div>
-                </div>
-                <div class="flex items-center mb-4">
-                    <label class="w-1/2 sm:w-1/4"
-                        for="password1">비밀번호
-                    </label>
-                    <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent" 
-                        id="password1" type="password" maxlength="30"/>
-                </div>
-                <div class="flex items-center mb-4">
-                    <label class="w-1/2 sm:w-1/4"
-                        for="password2">
-                        비밀번호 확인
-                    </label>
-                    <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent" 
-                        id="password2" type="password" maxlength="30"/>
+    <div class="flex-1 bg-amber-700/30 py-24">
+        <div class="p-5">
+            <div class="flex flex-col rounded-md bg-white/50 p-4 mb-10">
+                <h3 class="mb-7 ml-2">기본정보</h3>
+                <div class="w-4/5 self-center sm:translate-x-16">
+                    <div class="flex items-center mb-4">
+                        <div class="w-1/2 sm:w-1/4">사진</div>
+                        <img th:src="@{/images/profile_default.png}" class="rounded-full w-14" />
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-1/2 sm:w-1/4">이름</div>
+                        <div th:text="${realname}"></div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-1/2 sm:w-1/4">닉네임</div>
+                        <div th:text="${nickname}"></div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <label class="w-1/2 sm:w-1/4" for="password1">비밀번호
+                        </label>
+                        <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent" id="password1"
+                            type="password" maxlength="30" />
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <label class="w-1/2 sm:w-1/4" for="password2">
+                            비밀번호 확인
+                        </label>
+                        <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent" id="password2"
+                            type="password" maxlength="30" />
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="flex flex-col rounded-md bg-white/50 p-4">
-            <h3 class="mb-7 ml-2">선택정보</h3>
-            <div class="w-4/5 self-center sm:translate-x-16">
-                <div class="flex items-center mb-4">
-                    <label class="w-1/2 sm:w-1/4"
-                        for="phone">
-                        전화번호
-                    </label>
-                    <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent sm:w-1/4"
-                        id="phone" type="tel" maxlength="11" th:value="${phone}"/>
-                </div>
-                <div class="flex items-center mb-4">
-                    <label class="w-1/2 sm:w-1/4"
-                        for="detailAddress">
-                        주소
-                    </label>
-                    <textarea class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent resize-none"
-                        id="detailAddress" rows="3" th:text="${detailAddress}"></textarea>
-                </div>
-            </div>
-        </div>
 
-        
+            <div class="flex flex-col rounded-md bg-white/50 p-4">
+                <h3 class="mb-7 ml-2">선택정보</h3>
+                <div class="w-4/5 self-center sm:translate-x-16">
+                    <div class="flex items-center mb-4">
+                        <label class="w-1/2 sm:w-1/4" for="phone">
+                            전화번호
+                        </label>
+                        <input class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent sm:w-1/4" id="phone"
+                            type="tel" maxlength="11" th:value="${phone}" />
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <label class="w-1/2 sm:w-1/4" for="detailAddress">
+                            주소
+                        </label>
+                        <textarea class="w-1/2 px-3 py-1 outline-none focus:placeholder-transparent resize-none"
+                            id="detailAddress" rows="3" th:text="${detailAddress}"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="flex items-center justify-end h-24 p-3">
+    <div
+        class="flex items-center justify-end h-24 p-3 bg-white fixed bottom-0 left-0 right-0 max-w-[60rem] m-auto z-50">
         <button class="text-xl px-4 py-2 rounded-lg hover:opacity-30 mr-3 bg-amber-700 text-white"
             onclick="handleClickSubmit()">
             완료
         </button>
-        <a class="text-xl px-4 py-2 rounded-lg hover:opacity-30 bg-gray-500 text-white"
-            th:href="@{/config}">
+        <a class="text-xl px-4 py-2 rounded-lg hover:opacity-30 bg-gray-500 text-white" th:href="@{/config}">
             취소
         </a>
     </div>
@@ -106,4 +100,5 @@
     <script th:src="@{/js/config_profile.js}"></script>
 
 </body>
+
 </html>

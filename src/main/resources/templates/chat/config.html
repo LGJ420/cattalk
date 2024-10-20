@@ -11,7 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/fonts-local.css}">
 </head>
 
-<body class="h-screen max-w-[60rem] m-auto noto-sans-kr flex flex-col">
+<body class="h-dvh max-w-[60rem] m-auto noto-sans-kr flex flex-col">
     
     
     <header>
@@ -19,19 +19,17 @@
     </header>
 
 
-    <div class="flex-1 bg-amber-700/30 overflow-y-auto">
-        <div class="flex flex-col items-center justify-center h-full">
-                <a href="/config/friends" 
-                    class="bg-white w-2/3 h-1/6 px-1 flex items-center justify-center
-                    text-2xl rounded-lg my-5 cursor-pointer hover:text-white hover:bg-amber-700">
-                    친구 관리
-                </a>
-                <a href="/config/profile" 
-                    class="bg-white w-2/3 h-1/6 px-1 flex items-center justify-center
-                    text-2xl rounded-lg my-5 cursor-pointer hover:text-white hover:bg-amber-700">
-                    개인정보 설정
-                </a>
-        </div>
+    <div class="flex-1 flex flex-col items-center justify-center bg-amber-700/30">
+        <a href="/config/friends" 
+            class="bg-white w-2/3 h-1/6 px-1 flex items-center justify-center
+            text-2xl rounded-lg my-5 cursor-pointer hover:text-white hover:bg-amber-700">
+            친구 관리
+        </a>
+        <a href="/config/profile" 
+            class="bg-white w-2/3 h-1/6 px-1 flex items-center justify-center
+            text-2xl rounded-lg my-5 cursor-pointer hover:text-white hover:bg-amber-700">
+            개인정보 설정
+        </a>
     </div>
     
 
